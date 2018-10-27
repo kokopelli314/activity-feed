@@ -16,31 +16,42 @@
 									{:accept :json})]
 		(get (json/parse-string (get response :body)) "items")))
 
+(defn get-repo-link [pr]
+	(let [url (get pr "html_url")
+				text (nth (re-find #"github\.com\/repos\/(.*)\/issue" (get pr "url")) 1)]
+		[:a {:href url :target "_blank"} text]))
+
 (defn make-pull-request-html [pr]
-	[:div
-		[:h3 (get pr "title")]
-		[:p (md-to-html-string (get pr "body"))]
-		[:p (get pr "comments")]])
+	[:div {:class "pull-request-wrapper"}
+		[:p (get-repo-link pr) (str ": " (get pr "title"))]])
 
 (defn section-pull-requests [prs]
-	(map make-pull-request-html prs))
+	"Returns markup for first 3 PRs."
+	(map make-pull-request-html (take 3 prs)))
 
 
 (defn gen-page-head
   [title]
   [:head
-    [:title "Activity Feed"]
+		[:title "Activity Feed"]
+		(page/include-css "/css/normalize.css")
+		(page/include-css "/css/skeleton.css")
     (page/include-css "/css/styles.css")])
 
 (defn home-page
   []
   (page/html5
-    (gen-page-head "Bonkers")
-    [:h1 "Open Source"]
-    [:p "Latest activity from GitHub"]
-		[:img
-			{:src "https://avatars0.githubusercontent.com/u/10605105"
-			 :width "200px"
-			 :class "profile-image"}]
-		[:div
-			[:p (section-pull-requests (get-pull-request-data))]]))
+		(gen-page-head "Bonkers")
+			[:div {:class "content six columns offset-by-three"}
+				[:div {:class "row"}
+					[:div {:class "six columns"}
+						[:h1 {:class "row"} "Open Source"]
+						[:p "Latest pull requests from GitHub"]]
+					[:div {:class "six columns"}
+						[:a {:href "https://github.com/kokopelli314" :target "_blank"}
+							[:img
+								{:src "https://avatars0.githubusercontent.com/u/10605105"
+								:max-width "150px"
+								:class "profile-image"}]]]]
+				[:div {:class "pull-request-section"}
+					(section-pull-requests (get-pull-request-data))]]))

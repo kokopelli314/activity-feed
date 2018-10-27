@@ -1,6 +1,6 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
-	background: #ddd;
+	background: #eee;
 	color: #333;
 }
 
@@ -8,6 +8,22 @@ h1 {
 	color: rgb(3, 115, 119);
 }
 
+.content {
+	overflow: auto;
+}
+
 .profile-image {
-	width: 200px;
+	width: 150px;
+	border-radius: 50%;
+}
+
+.pull-request-wrapper {
+	border: 1px solid #8d959e;
+	border-radius: 3px;
+	padding: 16px;
+	margin-bottom: 16px;
+}
+
+.pull-request-wrapper p {
+	margin-bottom: 0;
 }
