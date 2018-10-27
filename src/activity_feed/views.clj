@@ -15,4 +15,5 @@
   (page/html5
     (gen-page-head "Bonkers")
     [:h1 "Open Source"]
-    [:p "Latest activity from GitHub."]))
+    [:p "Latest activity from GitHub."]
+    [:img {:src "https://avatars0.githubusercontent.com/u/10605105" :width "200px"}]))
