@@ -1,9 +1,10 @@
 (defproject activity-feed "0.1.0"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :description "Live GitHub public pull request feed"
+  :url "https://nathanclonts.com/pull-requests"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.9.0"]
-                 [compojure "1.6.1"]
+								 [compojure "1.6.1"]
+								 [ring/ring-jetty-adapter "1.6.1"]
                  [ring/ring-defaults "0.3.2"]
 								 [hiccup "1.0.5"]
 								 [clj-http "3.9.1"]

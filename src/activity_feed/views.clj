@@ -46,7 +46,7 @@
 				[:div {:class "row"}
 					[:div {:class "six columns"}
 						[:h1 {:class "row"} "Open Source"]
-						[:p "Latest pull requests from GitHub"]]
+						[:p "Latest public pull requests on GitHub"]]
 					[:div {:class "six columns"}
 						[:a {:href "https://github.com/kokopelli314" :target "_blank"}
 							[:img
