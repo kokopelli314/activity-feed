@@ -13,11 +13,12 @@
 	(GET "/"
 		[]
 		(views/home-page))
-	(wrap-base-url (route/resources "/") base-url)
+	(route/resources "/")
 	(route/not-found "Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+	(wrap-base-url
+		(wrap-defaults app-routes site-defaults) base-url))
 
 (defn -main
 	[& [port]]
