@@ -19,5 +19,7 @@
 (defn -main
 	[& [port]]
 	(let [port (Integer. (or port (System/getenv "PORT") 5000))]
-		(jetty/run-jetty #'app {:port port
+		(println (str "Port: " port))
+		(jetty/run-jetty #'app {:host "127.0.0.1"
+														:port port
 														:join? false})))
