@@ -3,14 +3,17 @@
             [compojure.core :refer :all]
             [compojure.route :as route]
 						[ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-						[ring.adapter.jetty :as jetty])
+						[ring.adapter.jetty :as jetty]
+						[hiccup.middleware :refer [wrap-base-url]])
 	(:gen-class))
+
+(def base-url "/activity-feed")
 
 (defroutes app-routes
 	(GET "/"
 		[]
 		(views/home-page))
-	(route/resources "/")
+	(wrap-base-url (route/resources "/") base-url)
 	(route/not-found "Not Found"))
 
 (def app
