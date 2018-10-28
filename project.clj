@@ -9,13 +9,15 @@
 								 [hiccup "1.0.5"]
 								 [clj-http "3.9.1"]
 								 [cheshire "5.8.1"]
-								 [markdown-clj "1.0.5"]]
-  :plugins [[lein-ring "0.12.4"]]
+								 [markdown-clj "1.0.5"]
+								 [environ "1.1.0"]]
+	:plugins [[lein-ring "0.12.4"]
+						[lein-environ "1.1.0"]]
   :ring {:handler activity-feed.handler/app}
   :profiles
-		{:dev {:resource-paths ["resources/dev"]
+		{:dev {:env {:base-url "/"}
 					 :dependencies [[javax.servlet/servlet-api "2.5"]
 													[ring/ring-mock "0.3.2"]]}
-		 :prod {:resource-paths ["resources/production"]}}
+		 :prod {:env {:base-url "/activity-feed"}}}
 	:main activity-feed.handler
 	:aot [activity-feed.handler])
