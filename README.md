@@ -1,6 +1,6 @@
 # activity-feed
 
-FIXME
+Practice application to show my latest GitHub commits via a Clojure web server.
 
 ## Prerequisites
 
@@ -12,8 +12,12 @@ You will need [Leiningen][] 2.0.0 or above installed.
 
 To start a web server for the application, run:
 
-    lein ring server
+```
+lein with-profile dev ring server
+```
 
-## License
+To create a deployable JAR file, run:
 
-Copyright © 2018 FIXME
+```
+lein with-profile prod uberjar
+```
