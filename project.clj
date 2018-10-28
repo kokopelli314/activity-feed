@@ -15,9 +15,8 @@
 						[lein-environ "1.1.0"]]
   :ring {:handler activity-feed.handler/app}
   :profiles
-		{:dev {:env {:base-url "/"}
+		{:dev {:env {:activity-feed-base-url "/"}
 					 :dependencies [[javax.servlet/servlet-api "2.5"]
-													[ring/ring-mock "0.3.2"]]}
-		 :prod {:env {:base-url "/activity-feed"}}}
+													[ring/ring-mock "0.3.2"]]}}
 	:main activity-feed.handler
 	:aot [activity-feed.handler])

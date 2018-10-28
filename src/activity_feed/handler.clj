@@ -26,4 +26,4 @@
 														:port port
 														:join? false})))
 
-(println (str "Base URL: " (env :base-url)))
+(println (str "Base URL: " (env :activity-feed-base-url)))

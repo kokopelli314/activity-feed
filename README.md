@@ -19,5 +19,5 @@ lein with-profile dev ring server
 To create a deployable JAR file, run:
 
 ```
-lein with-profile prod uberjar
+lein uberjar
 ```
