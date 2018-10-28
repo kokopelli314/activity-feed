@@ -13,7 +13,9 @@
   :plugins [[lein-ring "0.12.4"]]
   :ring {:handler activity-feed.handler/app}
   :profiles
-  {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-												[ring/ring-mock "0.3.2"]]}}
+		{:dev {:resource-paths ["resources/dev"]
+					 :dependencies [[javax.servlet/servlet-api "2.5"]
+													[ring/ring-mock "0.3.2"]]}
+		 :prod {:resource-paths ["resources/production"]}}
 	:main activity-feed.handler
 	:aot [activity-feed.handler])

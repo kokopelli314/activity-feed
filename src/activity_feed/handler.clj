@@ -4,10 +4,14 @@
             [compojure.route :as route]
 						[ring.middleware.defaults :refer [wrap-defaults site-defaults]]
 						[ring.adapter.jetty :as jetty]
-						[hiccup.middleware :refer [wrap-base-url]])
+						[hiccup.middleware :refer [wrap-base-url]]
+						[clojure.java.io :as io])
 	(:gen-class))
 
-(def base-url "/activity-feed")
+; get-config returns map including :base-url symbol
+(def config (delay (load-file (io/.getFile (io/resource "config.clj")))))
+(defn get-config [] @(force config))
+(def base-url (get (get-config) :base-url))
 
 (defroutes app-routes
 	(GET "/"
